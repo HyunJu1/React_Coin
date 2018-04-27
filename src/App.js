@@ -12,12 +12,13 @@ class App extends Component {
   }
   
   componentDidMount() {
-    axios.get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,LTC,DASH&tsyms=USD')
+    //axios.get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,LTC,DASH&tsyms=USD')
+    axios.get('https://api.coinmarketcap.com/v1/ticker/?limit=10') 
       .then(res => {
-        const cryptos = res.data.RAW;
+        const cryptos = res.data;
         console.log(cryptos);
         this.setState({cryptos: cryptos});
-      
+        
       });
   }
 
