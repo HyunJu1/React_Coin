@@ -13,22 +13,32 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('https://min-api.cryptocompare.com/data/pricemulti?fsyms=BTC,ETH,LTC,DASH&tsyms=USD')
+    axios.get('https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,LTC,DASH&tsyms=USD')
       .then(res => {
-        const cryptos = res.data;
+        const cryptos = res.data.RAW;
         console.log(cryptos);
         this.setState({cryptos: cryptos});
+      
       });
   }
 
   render() {
     return (
       <div className="App">
+        <table className="table mt-3">
+          <tr>
+            <th>이름</th>
+            <th>가격</th>
+            <th>VOLUME24HOUR</th>
+          </tr>
+        </table>
         {Object.keys(this.state.cryptos).map((key) => (
           <div id="crypto-container" key="">
             <table className="table mt-3"> 
               <th>{key}</th>
-              <th><NumberFormat value={this.state.cryptos[key].USD}  displayType={'text'}prefix={'$'}/> </th>        
+              <th>{'$'+this.state.cryptos[key].USD.PRICE}</th>
+              <th>{this.state.cryptos[key].USD.VOLUME24HOUR}</th> 
+
             </table>
           </div>
         ))}
