@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import accounting from 'accounting';
 class CoinList extends Component {
 
 
@@ -10,12 +10,13 @@ class CoinList extends Component {
 
     return (
       <tr key={coinData.index}>
-        <td>{coinData.name}</td>
-        <td>{coinData.price_usd}</td>
-        <td>{coinData.market_cap_usd}</td>  
-        <td style={color(coinData.percent_change_1h)}>{coinData.percent_change_1h}</td>
-        <td style={color(coinData.percent_change_1h)}>{coinData.percent_change_24h}</td>
-        <td style={color(coinData.percent_change_1h)}>{coinData.percent_change_7d}</td>
+        <td>{ 
+          coinData.name}</td>
+        <td>{accounting.formatMoney(coinData.price_usd)}</td>
+        <td>{accounting.formatMoney(coinData.market_cap_usd)}</td>  
+        <td style={color(coinData.percent_change_1h)}>{accounting.formatNumber(coinData.percent_change_1h)}</td>
+        <td style={color(coinData.percent_change_24h)}>{accounting.formatNumber(coinData.percent_change_24h)}</td>
+        <td style={color(coinData.percent_change_7d)}>{accounting.formatNumber(coinData.percent_change_7d)}</td>
       </tr>
     );
   }
