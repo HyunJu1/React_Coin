@@ -1,29 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { accounting } from 'accounting';
 
 class CoinList extends Component {
+
+
   renderCoin(coinData){
+    
+    const color = (i) => ({color: (i > 0 ? 'green' : 'red')});
+
     return (
-      <tr key={coinData.symbol}>
-        <td>
-          {coinData.name}
-        </td>
-        <td>
-          ${accounting.formatNumber(coinData.market_cap_usd)}
-        </td>
-        <td>
-          {accounting.formatMoney(coinData.price_usd)}
-        </td>
-        <td>
-          {accounting.formatNumber(coinData.percent_change_1h)}
-        </td>
-        <td>
-          {accounting.formatNumber(coinData.percent_change_24h)}
-        </td>
-        <td>
-          {accounting.formatNumber(coinData.percent_change_7d)}
-        </td>        
+      <tr key={coinData.index}>
+        <td>{coinData.name}</td>
+        <td>{coinData.price_usd}</td>
+        <td>{coinData.market_cap_usd}</td>  
+        <td style={color(coinData.percent_change_1h)}>{coinData.percent_change_1h}</td>
+        <td style={color(coinData.percent_change_1h)}>{coinData.percent_change_24h}</td>
+        <td style={color(coinData.percent_change_1h)}>{coinData.percent_change_7d}</td>
       </tr>
     );
   }
@@ -36,18 +28,25 @@ class CoinList extends Component {
       );
     }
   }
+
   render() {
     return (
       <div>
+        <div className="info-tab">
+          <p>
+            Top 10 Coins
+          </p>
+        </div>
         <table className="table table-hover">
           <thead>
             <tr>
-              <th>이름</th>
-              <th>총 거래량</th>
-              <th>가격</th>
-              <th>번동가(1H)</th>
-              <th>번동가(1D)</th>
-              <th>번동가(1M)</th>
+   
+              <th>Name</th>
+              <th>Price</th>
+              <th>Market Cap Price</th>
+              <th>Price Change(1H)</th>
+              <th>Price Change(1D)</th>
+              <th>Price Change(1M)</th>
             </tr>
           </thead>
           <tbody>

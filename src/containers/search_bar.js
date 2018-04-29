@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchTopTenCoins } from '../actions/index';
+import { fetchCoins } from '../actions/index';
 
 class SearchBar extends Component {
   constructor(props) {
@@ -9,14 +9,14 @@ class SearchBar extends Component {
     this.state = { term: '' };
     this.onInputChange = this.onInputChange.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
-    this.props.fetchTopTenCoins();
+    this.props.fetchCoins();
   }
   onInputChange(event) {
     this.setState({ term : event.target.value }); 
   }
   onFormSubmit(event) {
     event.preventDefault(); 
-    this.props.fetchTopTenCoins(this.state.term); 
+    this.props.fetchCoins(this.state.term); 
     this.setState({ term: '' }); 
   }
   render() {
@@ -36,7 +36,7 @@ class SearchBar extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ fetchTopTenCoins }, dispatch);
+  return bindActionCreators({ fetchCoins }, dispatch);
 }
 
 export default connect(null, mapDispatchToProps)(SearchBar);
