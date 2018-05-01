@@ -1,25 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import accounting from 'accounting';
+import { Link } from 'react-router-dom';
 import '../index.css';
+import SearchBar from './search_bar';
+import {fetchCoins} from '../actions';
+import _ from 'lodash';
 class CoinList extends Component {
 
-
-  renderCoin(coinData){
+  componentDidMount(){
+    this.props.fetchCoins();
+    console.log(this.props.coin);
+  }
+  renderCoin(){
     
     const color = (i) => ({color: (i > 0 ? 'green' : 'red')});
-
-    return (
-      <tr key={coinData.index}>
-        <td>{ 
-          coinData.name}</td>
-        <td>{accounting.formatMoney(coinData.price_usd)}</td>
-        <td>{accounting.formatMoney(coinData.market_cap_usd)}</td>  
-        <td style={color(coinData.percent_change_1h)}>{coinData.percent_change_1h}</td>
-        <td style={color(coinData.percent_change_24h)}>{coinData.percent_change_24h}</td>
-        <td style={color(coinData.percent_change_7d)}>{coinData.percent_change_7d}</td>
-      </tr>
-    );
+    
+    return _.map(this.props.coin, coinData => {
+      return(
+        <tr key={coinData.index}>
+          <td><Link to={`/${coinData.id}`}>
+            {coinData.symbol}</Link></td>
+          <td><Link to={`/${coinData.id}`}>
+            {coinData.name}</Link></td>
+          <td>{accounting.formatMoney(coinData.price_usd)}</td>
+          <td>{accounting.formatMoney(coinData.market_cap_usd)}</td>  
+          <td style={color(coinData.percent_change_1h)}>{coinData.percent_change_1h}%</td>
+          <td style={color(coinData.percent_change_24h)}>{coinData.percent_change_24h}%</td>
+          <td style={color(coinData.percent_change_7d)}>{coinData.percent_change_7d}%</td>
+        </tr>
+      );   
+    });
   }
   displayPrompt(coinData) {
     if(coinData.length === 0 ){
@@ -42,7 +53,7 @@ class CoinList extends Component {
         <table className="table table-hover">
           <thead>
             <tr>
-   
+              <th>Symbol</th>
               <th>Name</th>
               <th>Price</th>
               <th>Market Cap Price</th>
@@ -52,9 +63,17 @@ class CoinList extends Component {
             </tr>
           </thead>
           <tbody>
-            {this.props.coin.map(this.renderCoin)}
+            {this.renderCoin()}  
+           
+            {/* {_.map(this.props.coin,({id,name})=>{
+              <tr key={id}>
+                <td><Link to ={`/${id}`}>{name}</Link></td>
+              </tr>;
+            })} */}
+
           </tbody>
         </table>
+        <SearchBar/>
       </div>
     );
   }
@@ -66,4 +85,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(CoinList); 
+export default connect(mapStateToProps,{fetchCoins})(CoinList); 
