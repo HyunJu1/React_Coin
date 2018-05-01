@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchCoins } from '../actions/index';
-
+import { Link } from 'react-router-dom';
 class SearchBar extends Component {
   constructor(props) {
     super(props);
@@ -15,20 +15,22 @@ class SearchBar extends Component {
     this.setState({ term : event.target.value }); 
   }
   onFormSubmit(event) {
+    
     event.preventDefault(); 
     this.props.fetchCoins(this.state.term); 
+    <Link to={`/${this.state.term}`}></Link>;
     this.setState({ term: '' }); 
   }
   render() {
     return (
       <form onSubmit={this.onFormSubmit} className="input-group">
         <input 
-          placeholder="Search"
+          placeholder="COIN NAME을 검색하세요"
           className="form-control"
           value={this.state.term}
           onChange={this.onInputChange} />
         <span className="input-group-btn">
-          <button type="submit" className="btn btn-primary">Submit</button>
+          <Link to={`/${this.state.term.toLowerCase()}`}><button type="submit" className="btn btn-primary">Submit</button></Link>
         </span>
       </form>
     );
