@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { fetchCoins } from '../actions/index';
 import { Link } from 'react-router-dom';
+
 class SearchBar extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +22,7 @@ class SearchBar extends Component {
     <Link to={`/${this.state.term}`}></Link>;
     this.setState({ term: '' }); 
   }
+
   render() {
     return (
       <form onSubmit={this.onFormSubmit} className="input-group">

@@ -13,6 +13,7 @@ class App extends Component {
     return (
       <div className="App container mt-3">
         <Switch>
+
           <Route exact path='/' component={CoinList} />
           <Route path='/:id' component={CoinDetail}/>
         </Switch>
