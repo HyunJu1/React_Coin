@@ -10,7 +10,7 @@ class CoinChart extends Component {
     const { data } = this.props;
     const chartData = _.map(data, coinData => {
       return {
-        rank: parseInt(coinData.rank),
+        // rank: parseInt(coinData.rank),
         name: coinData.name,
         Price_Change_1h: parseFloat(coinData.percent_change_1h),
         // color: (coinData.percent_change_1h > 0 ? "#009900" : "#ff0000"),

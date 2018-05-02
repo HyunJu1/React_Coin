@@ -12,7 +12,6 @@ import io from 'socket.io-client';
 import CoinIcon from  './coin_icon';
 import CoinChart from './chart.js';
 
-
 class CoinList extends Component {
 
   componentDidMount(){
@@ -28,8 +27,7 @@ class CoinList extends Component {
       return(
         
         <tr key={coinData.index}>
-          <td>
- 
+          <td> 
             <CoinIcon coinSymbol={coinData.symbol} />
           </td>
           <td><Link to={`/${coinData.id}`}>
@@ -80,15 +78,13 @@ class CoinList extends Component {
             </tr>
           </thead>
           <tbody>
-            {/* {this.getAllCoins()} */}
+
             {this.renderCoin()}   
 
           </tbody>
         </table>
         <SearchBar/>
-        <CoinChart data={this.props.coin}/>;
-        
-        
+        <CoinChart data={this.props.coin}/>
       </div>
     );
   }

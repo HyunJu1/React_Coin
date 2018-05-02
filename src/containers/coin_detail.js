@@ -39,11 +39,12 @@ class CoinDetail extends Component{
         <p>24 Hour Volume: {coins['24h_volume_usd']}</p>
         <p>Market Cap: {coins.market_cap_usd}</p>
         <p>Available Supply: {coins.available_supply}</p>
-
-        <CoinChart data={coins}/>
-
+        <br/>
+        <br/>
         <Link to="/" className="btn btn-primary back">Go Back</Link>
- 
+        
+  
+   
       </div>    
     );
   }
