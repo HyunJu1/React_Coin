@@ -2,8 +2,8 @@ import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
 import {fetchCoin} from '../actions';
 import { connect } from "react-redux";
-
-// import CoinIcon from './CoinIcon';
+import CoinIcon from './coin_icon';
+import CoinChart from './chart.js';
 
 import '../index.css';
 class CoinDetail extends Component{
@@ -16,14 +16,17 @@ class CoinDetail extends Component{
   render(){
     const {coins} = this.props;
     if (!coins){
-      return <div>Loading...</div>;
-    }
+      return( 
+        <div>
+          <p>해당 코인이 존재하지 않습니다.</p>
+          <Link to="/" className="btn btn-primary back">Go Back</Link>
+        </div>
+      );}
     return(
       <div>
   
 
-{/*         
-        <CoinIcon coinSymbol={coins.symbol} /> */}
+        <CoinIcon coinSymbol={coins.symbol} />
         <h3>{coins.name}</h3>
     
         <p>Symbol: {coins.symbol}</p>
@@ -36,6 +39,8 @@ class CoinDetail extends Component{
         <p>24 Hour Volume: {coins['24h_volume_usd']}</p>
         <p>Market Cap: {coins.market_cap_usd}</p>
         <p>Available Supply: {coins.available_supply}</p>
+
+        <CoinChart data={coins}/>
 
         <Link to="/" className="btn btn-primary back">Go Back</Link>
  

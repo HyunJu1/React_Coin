@@ -10,6 +10,7 @@ import { BootstrapTable, TableRow,TableHeader, TableBody, TableRowColumn, TableH
 import _ from 'lodash';
 import io from 'socket.io-client';
 import CoinIcon from  './coin_icon';
+import CoinChart from './chart.js';
 
 
 class CoinList extends Component {
@@ -25,8 +26,10 @@ class CoinList extends Component {
     
     return _.map(this.props.coin, coinData => {
       return(
+        
         <tr key={coinData.index}>
           <td>
+ 
             <CoinIcon coinSymbol={coinData.symbol} />
           </td>
           <td><Link to={`/${coinData.id}`}>
@@ -57,6 +60,7 @@ class CoinList extends Component {
   render() {
     return (
       <div>
+        
         <div className="info-tab">
           <p>
             Top 10 Coins
@@ -82,6 +86,9 @@ class CoinList extends Component {
           </tbody>
         </table>
         <SearchBar/>
+        <CoinChart data={this.props.coin}/>;
+        
+        
       </div>
     );
   }
