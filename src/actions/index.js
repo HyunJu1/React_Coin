@@ -1,8 +1,12 @@
 import axios from 'axios';
 const ROOT_URL = "https://api.coinmarketcap.com/v1/ticker/?limit=10";
 
+
+
 export const FETCH__COINS = 'FETCH__COINS';
 export const FETCH__COIN = 'FETCH__COIN';
+
+
 
 
 export function fetchCoins() {
@@ -22,3 +26,4 @@ export function fetchCoin(id) {
     payload: request
   };
 }
+
