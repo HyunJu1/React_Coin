@@ -11,7 +11,8 @@ import _ from 'lodash';
 import io from 'socket.io-client';
 import CoinIcon from  './coinIcon';
 import CoinChart from './barChart';
-// const last_updating= new Date(this.props.coin.last_updated*1000);
+import Timestamp from 'react-timestamp';
+
 class CoinList extends Component {
 
   componentDidMount(){
@@ -60,8 +61,11 @@ class CoinList extends Component {
         
         <div className="info-tab">
           <p>
-            Top 10 Coins
+            Top 10 Coins 
+            <br/>
+              (Last Updated : <Timestamp time={this.props.coin.last_updated} format='full' /> )
           </p>
+          
         </div>
         <table className="table table-hover">
           <thead>

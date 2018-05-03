@@ -3,8 +3,7 @@ import {Link} from 'react-router-dom';
 import {fetchCoin} from '../actions';
 import { connect } from "react-redux";
 import CoinIcon from './coinIcon';
-import CoinChart from './barChart';
-import moment from 'moment';
+import Timestamp from 'react-timestamp';
 
 import '../index.css';
 class CoinDetail extends Component{
@@ -26,7 +25,7 @@ class CoinDetail extends Component{
       );}
     return(
      
-      <div>
+      <div className="content">
   
 
         <CoinIcon coinSymbol={coins.symbol} />
@@ -41,13 +40,11 @@ class CoinDetail extends Component{
         <p>24 Hour Volume: {coins['24h_volume_usd']}</p>
         <p>Market Cap: {coins.market_cap_usd}</p>
         <p>Available Supply: {coins.available_supply}</p>
-        {/* <p>Last Updated : {new Date(coins[0].last_updated*1000)}</p> */}
+        <p>Last Updated : <Timestamp time={coins.last_updated} format='full' /></p>
         <br/>
         <br/>
         <Link to="/" className="btn btn-primary back">Go Back</Link>
         
-  
-   
       </div>    
     );
   }
