@@ -4,14 +4,14 @@ import accounting from 'accounting';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import '../index.css';
-import SearchBar from './search_bar';
+import SearchBar from './searchBar';
 import {fetchCoins} from '../actions';
 import { BootstrapTable, TableRow,TableHeader, TableBody, TableRowColumn, TableHeaderColumn } from 'react-bootstrap-table';
 import _ from 'lodash';
 import io from 'socket.io-client';
-import CoinIcon from  './coin_icon';
-import CoinChart from './chart.js';
-
+import CoinIcon from  './coinIcon';
+import CoinChart from './barChart';
+// const last_updating= new Date(this.props.coin.last_updated*1000);
 class CoinList extends Component {
 
   componentDidMount(){
@@ -22,10 +22,9 @@ class CoinList extends Component {
   }
   renderCoin(){
     const color =(i) => ({color: (i > 0 ? 'green' : 'red')});
-    
+ 
     return _.map(this.props.coin, coinData => {
       return(
-        
         <tr key={coinData.index}>
           <td> 
             <CoinIcon coinSymbol={coinData.symbol} />
@@ -34,8 +33,8 @@ class CoinList extends Component {
             {coinData.symbol}</Link></td>
           <td><Link to={`/${coinData.id}`}>
             {coinData.name}</Link></td>
-          <td>{accounting.formatMoney(coinData.price_usd)}</td>
-          <td>{accounting.formatMoney(coinData.market_cap_usd)}</td>  
+          <td><Link to={`/${coinData.id}`}>{accounting.formatMoney(coinData.price_usd)}</Link></td>
+          <td><Link to={`/${coinData.id}`}>{accounting.formatMoney(coinData.market_cap_usd)}</Link></td>  
           <td style={color(coinData.percent_change_1h)}>{coinData.percent_change_1h}%</td>
           <td style={color(coinData.percent_change_24h)}>{coinData.percent_change_24h}%</td>
           <td style={color(coinData.percent_change_7d)}>{coinData.percent_change_7d}%</td>
@@ -83,6 +82,7 @@ class CoinList extends Component {
 
           </tbody>
         </table>
+        {/* <p> {last_updating}</p> */}
         <SearchBar/>
         <CoinChart data={this.props.coin}/>
       </div>

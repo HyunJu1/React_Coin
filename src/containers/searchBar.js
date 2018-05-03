@@ -19,6 +19,7 @@ class SearchBar extends Component {
     
     event.preventDefault(); 
     this.props.fetchCoins(this.state.term); 
+    
     <Link to={`/${this.state.term}`}></Link>;
     this.setState({ term: '' }); 
   }
@@ -27,7 +28,7 @@ class SearchBar extends Component {
     return (
       <form onSubmit={this.onFormSubmit} className="input-group">
         <input 
-          placeholder="COIN NAME을 검색하세요"
+          placeholder="Search For Coin Name"
           className="form-control"
           value={this.state.term}
           onChange={this.onInputChange} />
