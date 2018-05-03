@@ -14,6 +14,7 @@ class CoinDetail extends Component{
   }
 
   render(){
+    const color =(i) => ({color: (i > 0 ? 'green' : 'red')});
     const {coins} = this.props;
 
     if (!coins){
@@ -33,9 +34,9 @@ class CoinDetail extends Component{
     
         <p>Symbol: {coins.symbol}</p>
         <p>Price USD: {coins.price_usd}</p>
-        <p>Price Change (1H): {coins.percent_change_1h}%</p>
-        <p>Price Change (1D): {coins.percent_change_24h}%</p>
-        <p>Price Change (1W): {coins.percent_change_7d}%</p>
+        <p style={color(coins.percent_change_1h)}>Price Change (1H): {coins.percent_change_1h}%</p>
+        <p style={color(coins.percent_change_24h)}>Price Change (1D): {coins.percent_change_24h}%</p>
+        <p style={color(coins.percent_change_7d)}>Price Change (1W): {coins.percent_change_7d}%</p>
         <p>Total Supply: {coins.total_supply}</p>
         <p>24 Hour Volume: {coins['24h_volume_usd']}</p>
         <p>Market Cap: {coins.market_cap_usd}</p>
