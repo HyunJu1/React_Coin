@@ -1,58 +1,60 @@
 import React from 'react';
 import _ from 'lodash';
 import { Link } from 'react-router-dom';
-import {BarChart, Bar, XAxis, Cell, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import {LineChart, Line, XAxis, Cell, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import axios from 'axios';
 import moment from 'moment';
+// import {fetchGraph} from '../actions';
+
 const CoinGraph =props=> {
   
-
-  // function graph(id, type){
-    
-  //   let now = moment.utc().valueOf();
-  //   const graphList = {
-  //     day: [moment.utc().subtract(1, 'day').valueOf(), now],
-  //     week: [moment.utc().subtract(1, 'week').valueOf(), now],
-  //     month: [moment.utc().subtract(1, 'month').valueOf(), now],
-  //     quarter: [moment.utc().subtract(3, 'month').valueOf(), now],
-  //     year: [moment.utc().subtract(1, 'year').valueOf(), now],
-  //     all: [moment.utc().subtract(10, 'years').valueOf(), now]
-  //   };
-  // }
+  let now = Date.now();
+  let then = now - 24 * 60 * 60 * 1000;
   let id = props.id;
-  let url = `https://graphs2.coinmarketcap.com/currencies/${id}}/`;
+  let url = `https://graphs2.coinmarketcap.com/currencies/${id}/${then}/${now}/`;
+
+  var chartData;
   console.log(url);
-  const request = axios.get(url); 
-  console.log("request:"+request);
+  const globalCap =  axios.get(url)
+    .then(function(response){
+      const dataList=response.data;
+
+      
+      const chartData =dataList.map(price => {
+        console.log(price);
+        for(var j=0;j<100;j=j+12){
+          console.log(price[0]);
+          console.log(price[j][1]);
+          return {
+            
+            idd : moment(price[0]).format("YYYY/MM/DD/HH:MM"),
+            price :price[1],
+            // date: moment(price[0]/1000).format("MM/YYYY")
+            
+          };
+        
+        }
+      });
+  
+    });
+
+  return(
+ 
+
+    <LineChart width={1100} height={500} data={chartData}>
+      <XAxis dataKey='idd'/>
+      <YAxis dataKey='price' fill='#000000'/>
+      <CartesianGrid strokeDasharray="4 4"/>
+      <Tooltip/>
+      <Legend />
+      <Line dataKey='price'  fill= '#000000'  >
+
+      </Line>
+    </LineChart>    
 
 
-  const chartData = _.map(request, coinData => {
-    return {
-      // rank: parseInt(coinData.rank),
-      idd : coinData.price_usd[0][0],
-      price :parseFloat(coinData.price_usd[0][1]),
-
-    };
-  });
-  return (
-    <div>
-      <br/>
-      <BarChart width={1100} height={500} data={chartData}>
-        <XAxis dataKey='idd'/>
-        <YAxis dataKey='price' fill='#000000'/>
-        <CartesianGrid strokeDasharray="4 4"/>
-        <Tooltip/>
-        <Legend />
-        <Bar dataKey='price'  fill= '#000000'onclick={<Link to={`/id`}></Link>} >
-          {chartData.map((entry,index)=>{
-            const colors = entry.Price_Change_1HOUR>0?'#009900':'#ff0000';
-            return <Cell fill={colors} key='idd'  />;
-          })
-          }
-        </Bar>
-      </BarChart>      
-    </div>
   );
 };
+  
 
 export default CoinGraph;
