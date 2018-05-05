@@ -4,7 +4,7 @@ import {fetchCoin} from '../actions';
 import { connect } from "react-redux";
 import CoinIcon from './coinIcon';
 import Timestamp from 'react-timestamp';
-
+import CoinGraph from './coinGraph';
 import '../index.css';
 class CoinDetail extends Component{
   componentDidMount(){
@@ -15,6 +15,7 @@ class CoinDetail extends Component{
 
   render(){
     const color =(i) => ({color: (i > 0 ? 'green' : 'red')});
+    // const { id } = this.props.match.params;
     const {coins} = this.props;
 
     if (!coins){
@@ -45,7 +46,7 @@ class CoinDetail extends Component{
         <br/>
         <br/>
         <Link to="/" className="btn btn-primary back">Go Back</Link>
-        
+        <CoinGraph id={coins.id}/>
       </div>    
     );
   }

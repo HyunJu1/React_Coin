@@ -2,10 +2,8 @@ import { FETCH__COINS,FETCH__COIN} from '../actions/index';
 import _ from 'lodash';
 export default function(state = [], action) {
   console.log("ACTION", action);
-  switch(action.type) {
-  // case `${FETCH__COINS}_FULFILLED`: 
-  //   console.log('FETCH_COINS', action.payload.data);
-  //   return action.payload.data;
+  switch(action.type) { 
+
   case`${FETCH__COINS}_FULFILLED`:
     console.log(action.payload.data);
     return _.mapKeys(action.payload.data, 'id');

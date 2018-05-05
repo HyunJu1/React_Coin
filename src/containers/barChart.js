@@ -11,6 +11,7 @@ class CoinChart extends Component {
     const chartData = _.map(data, coinData => {
       return {
         // rank: parseInt(coinData.rank),
+        id : coinData.id,
         name: coinData.name,
         Price_Change_1HOUR: parseFloat(coinData.percent_change_1h),
         Price_Change_1DAY: parseFloat(coinData.percent_change_24h),
@@ -27,10 +28,10 @@ class CoinChart extends Component {
           <CartesianGrid strokeDasharray="4 4"/>
           <Tooltip/>
           <Legend />
-          <Bar dataKey='Price_Change_1HOUR'  fill= '#000000' onclick={<Link to={`/${data.id}`}></Link>}>
+          <Bar dataKey='Price_Change_1HOUR'  fill= '#000000'onclick={<Link to={`/id`}></Link>} >
             {chartData.map((entry,index)=>{
               const colors = entry.Price_Change_1HOUR>0?'#009900':'#ff0000';
-              return <Cell fill={colors} key='name' />;
+              return <Cell fill={colors} key='name'  />;
             })
             }
           </Bar>
