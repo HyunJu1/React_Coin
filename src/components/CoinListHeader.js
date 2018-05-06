@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CoinListHeader = props => (
+const CoinListHeader = () => (
   <thead>
     <tr>
       <th>Image</th>

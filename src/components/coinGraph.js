@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import _ from 'lodash';
-import { Link } from 'react-router-dom';
-import {LineChart, Line, XAxis, Cell, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
+import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import axios from 'axios';
 import moment from 'moment';
 // import {fetchGraph} from '../actions';
@@ -13,20 +12,7 @@ class CoinGraph extends Component{
       coinList:[]
     };
   }
-  // componentWillMount(){
-  //   let now = Date.now();
-  //   let then = now - 24 * 60 * 60 * 1000;
-  //   let id = this.props.id;
-  //   let url = `https://graphs2.coinmarketcap.com/currencies/${id}/${then}/${now}/`;
-  //   axios.get(url).then=(response)=>{ 
-  //     console.log(response.data.price_usd[0]);
-  //     this.setState({
-  //       coinList:(response.data.price_usd[0])
-  //     });
-  //   };
-  //   console.log(this.state.coinList);
-  // }
-
+ 
   render(){
     let now = Date.now();
     let then = now - 24 * 60 * 60 * 1000;
@@ -53,7 +39,6 @@ class CoinGraph extends Component{
       
     return(
   
-
       <LineChart width={1200} height={500} data={chartData1}>
         <XAxis dataKey='idd'/>
         <YAxis dataKey='price' fill='#ffffff'/>
@@ -61,10 +46,8 @@ class CoinGraph extends Component{
         <Tooltip/>
         <Legend />
         <Line dataKey='price'  fill= '#ffffff'  >
-
         </Line>
       </LineChart>    
-
 
     );
   }

@@ -7,12 +7,10 @@ body {
 .table {
   background-color: rgba(0, 0, 0, 0.7);
 }
-p{
+.content p{
   color: #ffffff;
 }
-div{
-  color:#ffffff;
-}
+
 
 img{
   width:32px;
@@ -66,8 +64,11 @@ input:focus {
 
 
 .input-group{
-  width:30em;
-  margin-left: 54%;
+  width:50em;
+  margin-left: 30%;
+}
+.form-control{
+  width:50em;
 }
 .content img{
   width:100px;

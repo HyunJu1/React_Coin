@@ -29,7 +29,7 @@ class CoinChart extends Component {
           <Tooltip/>
           <Legend />
           <Bar dataKey='Price_Change_1HOUR'  fill= '#000000'onclick={<Link to={`/id`}></Link>} >
-            {chartData.map((entry,index)=>{
+            {chartData.map((entry)=>{
               const colors = entry.Price_Change_1HOUR>0?'#009900':'#ff0000';
               return <Cell fill={colors} key='name'  />;
             })
@@ -45,7 +45,7 @@ class CoinChart extends Component {
           <Tooltip/>
           <Legend />
           <Bar dataKey='Price_Change_1DAY'  fill= '#000000'>
-            {chartData.map((entry,index)=>{
+            {chartData.map((entry)=>{
               const colors = entry.Price_Change_1DAY>0?'#009900':'#ff0000';
               return <Cell fill={colors} key='name'/>;
             })
@@ -61,7 +61,7 @@ class CoinChart extends Component {
           <Tooltip/>
           <Legend />
           <Bar dataKey='Price_Change_1WEEK'  fill= '#000000'>
-            {chartData.map((entry,index)=>{
+            {chartData.map((entry)=>{
               const colors = entry.Price_Change_1WEEK>0?'#009900':'#ff0000';
               return <Cell fill={colors} key='name'/>;
             })

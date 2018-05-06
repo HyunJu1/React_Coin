@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CoinIcon from '../containers/coinIcon';
+import CoinIcon from '../components/coinIcon';
 import accounting from 'accounting';
 import Timestamp from 'react-timestamp';
 

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Route, Switch} from 'react-router-dom';
 import './App.css';
-import './index.css';
-import CoinList from './containers/coin_list';
-import CoinDetail from './containers/coin_detail';
+
+import CoinList from './views/coin_list';
+import CoinDetail from './views/coin_detail';
 import Header from './views/Header';
 class App extends Component {
 

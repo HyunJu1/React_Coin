@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../index.css';
-import SearchBar from './searchBar';
 import {fetchCoins} from '../actions';
-import { BootstrapTable, TableRow,TableHeader, TableBody, TableRowColumn, TableHeaderColumn } from 'react-bootstrap-table';
 import _ from 'lodash';
-import CoinChart from './barChart';
+import CoinChart from '../components/barChart';
 import CoinListHeader from '../components/CoinListHeader';
 import CoinListItem from '../components/CoinListItem';
 
@@ -31,6 +29,7 @@ class CoinList extends Component {
  
     return _.map(this.props.coin, coinData => {
       return(
+        
         <CoinListItem coin={coinData}/>
       );   
     });
@@ -52,9 +51,10 @@ class CoinList extends Component {
     console.log("dataList:"+dataList);
 
     return (
-      <div>        
+      <div>
+        <h5> CryptoCurrency Table</h5>        
+     
         <br/>
-        <br/><br/>
         <table className="table table-hover">
           <CoinListHeader/>
           <tbody>
