@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom';
-import {fetchCoin} from '../actions';
+import {fetchCoin,fetchCoins} from '../actions';
 import { connect } from "react-redux";
 import CoinIcon from './coinIcon';
 import Timestamp from 'react-timestamp';
@@ -8,9 +8,16 @@ import CoinGraph from './coinGraph';
 import '../index.css';
 class CoinDetail extends Component{
   componentDidMount(){
+    this.props.fetchCoins();
     const { id } = this.props.match.params;
     this.props.fetchCoin(id);
     console.log('id :' +id);
+    setInterval(() => {
+      this.props.fetchCoin(id);
+      console.log("data Update");
+      
+    }, 500000);
+ 
   }
 
   render(){
@@ -27,7 +34,7 @@ class CoinDetail extends Component{
       );}
     return(
      
-      <div className="card display-card">
+      <div className="content">
   
 
         <CoinIcon coinSymbol={coins.symbol} />
@@ -53,7 +60,7 @@ class CoinDetail extends Component{
 }
 
 function mapStateToProps({ coin }, ownProps) {
-  return { coins: coin[ownProps.match.params.id] };
+  return { coins: coin[ownProps.match.params.id]};
 }
 
-export default connect(mapStateToProps, { fetchCoin }) (CoinDetail);
+export default connect(mapStateToProps, { fetchCoin ,fetchCoins}) (CoinDetail);
