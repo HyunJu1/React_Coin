@@ -6,34 +6,48 @@ import axios from 'axios';
 import moment from 'moment';
 // import {fetchGraph} from '../actions';
 
-
-export default class CoinGraph extends Component{
+class CoinGraph extends Component{
   constructor(props){
     super(props);
     this.state={
-      coinList:null
+      coinList:[]
     };
   }
-  componentDidMount(){
+  // componentWillMount(){
+  //   let now = Date.now();
+  //   let then = now - 24 * 60 * 60 * 1000;
+  //   let id = this.props.id;
+  //   let url = `https://graphs2.coinmarketcap.com/currencies/${id}/${then}/${now}/`;
+  //   axios.get(url).then=(response)=>{ 
+  //     console.log(response.data.price_usd[0]);
+  //     this.setState({
+  //       coinList:(response.data.price_usd[0])
+  //     });
+  //   };
+  //   console.log(this.state.coinList);
+  // }
+
+  render(){
     let now = Date.now();
     let then = now - 24 * 60 * 60 * 1000;
     let id = this.props.id;
     let url = `https://graphs2.coinmarketcap.com/currencies/${id}/${then}/${now}/`;
-    //const body = await fetch(`${GRAPH_URI}${coin}/${start}/${end}`);
-    axios.get(url).then(function(response){ console.log(response.data.price_usd);this.setState({coinList:response.data});}).catch((error)=>{console.log(error);});
+    axios.get(url).then(response=>{ 
+      console.log(response.data.price_usd[0]);
+      this.setState({
+        coinList:response.data.price_usd
+      });
+    });
     console.log(this.state.coinList);
-  }
-
-  render(){
     var chartData1 =_.map(this.state.coinList,price => {
       console.log(price);
       for(var j=0;j<100;j=j+12){
         console.log(price[0]); 
-        console.log(price[j][1]);
+        console.log(price[1]);
         return {
           
-          idd : moment(price.price_usd[0]).format("YYYY/MM/DD/HH:MM"),
-          price :price.price_usd[1],
+          idd : moment(price[0]).format("YYYY/MM/DD/HH:MM"),
+          price :price[1],
       
         };
           
@@ -61,3 +75,4 @@ export default class CoinGraph extends Component{
 
 }
   
+export default CoinGraph;
