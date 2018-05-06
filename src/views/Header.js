@@ -26,11 +26,11 @@ class Header extends Component {
 
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-              <li className="nav-item active">
+              <li className="nav-item">
                 <a className="nav-link" href="/">Coin Table</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">Change Compare Graph</a>
+                <a className="nav-link" href="/barchart">Change Compare Graph</a>
               </li>
 
             </ul>

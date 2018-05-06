@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import '../index.css';
 import {fetchCoins} from '../actions';
 import _ from 'lodash';
-import CoinChart from '../components/barChart';
+import { Link } from 'react-router-dom';
 import CoinListHeader from '../components/CoinListHeader';
 import CoinListItem from '../components/CoinListItem';
 
@@ -64,10 +64,16 @@ class CoinList extends Component {
           </tbody>
         </table>
       
-        <CoinChart data={this.props.coin}/>
+        {/* <CoinChart data={this.props.coin}/> */}
 
-
+        <br/>
+        <Link to={`/barchart`}><button type="submit" className="btn btn-dark">See BarChart(Change Price(%)) </button></Link>
+        <br/>
+        <br/>
+        <br/>
+   
       </div>
+
     );
   }
 }

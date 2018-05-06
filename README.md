@@ -1,4 +1,4 @@
-React App
+CyptoCurrency Quote Checking React App
 
 Using API : https://api.coinmarketcap.com/
 

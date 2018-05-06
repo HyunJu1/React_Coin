@@ -15,7 +15,7 @@ class CoinGraph extends Component{
  
   render(){
     let now = Date.now();
-    let then = now - 24 * 60 * 60 * 1000;
+    let then = now - 24 * 60 * 60 * 1000 * 7; //7DAY
     let id = this.props.id;
     let url = `https://graphs2.coinmarketcap.com/currencies/${id}/${then}/${now}/`;
     axios.get(url).then(response=>{ 
@@ -39,7 +39,7 @@ class CoinGraph extends Component{
       
     return(
   
-      <LineChart width={1200} height={500} data={chartData1}>
+      <LineChart width={1100} height={500} data={chartData1}>
         <XAxis dataKey='idd'/>
         <YAxis dataKey='price' fill='#ffffff'/>
         <CartesianGrid strokeDasharray="4 4"/>
