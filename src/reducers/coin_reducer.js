@@ -6,6 +6,7 @@ export default function(state = [], action) {
 
   case`${FETCH__COINS}_FULFILLED`:
     console.log(action.payload.data);
+    //return action.payload;
     return _.mapKeys(action.payload.data, 'id');
     // return action.payload.data;
   case `${FETCH__COIN}_FULFILLED`:

@@ -27,7 +27,7 @@ class CoinDetail extends Component{
       );}
     return(
      
-      <div className="content">
+      <div className="card display-card">
   
 
         <CoinIcon coinSymbol={coins.symbol} />

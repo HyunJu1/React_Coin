@@ -11,24 +11,40 @@ import Timestamp from 'react-timestamp';
 import CoinListHeader from '../components/CoinListHeader';
 import CoinListItem from '../components/CoinListItem';
 import moment from 'moment';
+
 class CoinList extends Component {
 
   componentDidMount(){
     this.props.fetchCoins();
     console.log(this.props.coin);
-    this.timer = setInterval(()=> this.props.fetchCoins(), 11000000);
-    this.timer = setInterval(()=> mapStateToProps(this.props.coin), 11000000);
-    this.forceUpdate();
-    var time = setInterval(function() {
+
+    // setInterval(()=> this.props.fetchCoins(), 11000);
+    setInterval(() => {
+      this.props.fetchCoins();
+      console.log("data Update");
+      
+    }, 100000);
+ 
+    setInterval(function() {
       this.setState({now: Date.now()/1000});
     }.bind(this), 1000);
   }
   constructor(props){
     super(props);
     this.state={
-      now:Date.now()/1000
+      now:Date.now()/1000,
+      // coin:this.props.coin
     };
   }
+  // update(){
+  //   this.props.fetchCoins()
+  //     .then(res => {
+  //       this.setState({
+  //         coin: this.payload.data
+  //       }); 
+  //     });
+  // }
+
   renderCoin(){
  
     return _.map(this.props.coin, coinData => {
