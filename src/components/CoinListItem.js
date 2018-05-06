@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import CoinIcon from '../containers/coinIcon';
 import accounting from 'accounting';
-
+import Timestamp from 'react-timestamp';
 
 const CoinListItem = props => {
   const color =(i) => ({color: (i > 0 ? 'green' : 'red')});
@@ -22,6 +22,7 @@ const CoinListItem = props => {
       <td style={color(coinData.percent_change_1h)}>{coinData.percent_change_1h}%</td>
       <td style={color(coinData.percent_change_24h)}>{coinData.percent_change_24h}%</td>
       <td style={color(coinData.percent_change_7d)}>{coinData.percent_change_7d}%</td>
+      <td><Timestamp time={coinData.last_updated}/></td>
     </tr>
   );
 };

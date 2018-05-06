@@ -11,6 +11,7 @@ const CoinListHeader = props => (
       <th>Price Change(1H)</th>
       <th>Price Change(1D)</th>
       <th>Price Change(1M)</th>
+      <th>Last Updated(API)</th>
     </tr>
   </thead>
 

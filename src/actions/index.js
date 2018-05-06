@@ -26,13 +26,13 @@ export function fetchCoin(id) {
     payload: request
   };
 }
-export function fetchGraph(id){
-  let now = Date.now();
-  let then = now - 24 * 60 * 60 * 1000;
-  let url = `https://graphs2.coinmarketcap.com/currencies/${id}/${then}/${now}/`;
-  const request=axios.get(url);
-  return {
-    payload:request
-  };
-}
+// export function fetchGraph(id){
+//   let now = Date.now();
+//   let then = now - 24 * 60 * 60 * 1000;
+//   let url = `https://graphs2.coinmarketcap.com/currencies/${id}/${then}/${now}/`;
+//   const request=axios.get(url);
+//   return {
+//     payload:request
+//   };
+// }
 
