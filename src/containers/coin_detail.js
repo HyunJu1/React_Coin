@@ -16,7 +16,7 @@ class CoinDetail extends Component{
       this.props.fetchCoin(id);
       console.log("data Update");
       
-    }, 500000);
+    }, 50000);
  
   }
 
@@ -28,18 +28,20 @@ class CoinDetail extends Component{
     if (!coins){
       return( 
         <div>
-          <p>해당 코인이 존재하지 않습니다.</p>
+          <p>No Coin To Show</p>
           <Link to="/" className="btn btn-primary back">Go Back</Link>
         </div>
       );}
     return(
-     
-      <div className="content">
-  
 
+      <div className="content">
+        <br/>
+        <br/>
+        <br/>  
         <CoinIcon coinSymbol={coins.symbol} />
+        <br/>
         <h3>{coins.name}</h3>
-    
+        <br/>
         <p>Symbol: {coins.symbol}</p>
         <p>Price USD: {coins.price_usd}</p>
         <p style={color(coins.percent_change_1h)}>Price Change (1H): {coins.percent_change_1h}%</p>

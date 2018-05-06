@@ -40,30 +40,27 @@ class CoinGraph extends Component{
     });
     console.log(this.state.coinList);
     var chartData1 =_.map(this.state.coinList,price => {
-      console.log(price);
-      for(var j=0;j<100;j=j+12){
-        console.log(price[0]); 
-        console.log(price[1]);
-        return {
-          
-          idd : moment(price[0]).format("YYYY/MM/DD/HH:MM"),
-          price :price[1],
-      
-        };
-          
-      }
-    });
+
+      return {
+        
+        idd : moment(price[0]).format("YYYY/MM/DD/HH:MM"),
+        price :price[1],
+    
+      };
+        
+    }
+    );
       
     return(
   
 
-      <LineChart width={1100} height={500} data={chartData1}>
+      <LineChart width={1200} height={500} data={chartData1}>
         <XAxis dataKey='idd'/>
-        <YAxis dataKey='price' fill='#000000'/>
+        <YAxis dataKey='price' fill='#ffffff'/>
         <CartesianGrid strokeDasharray="4 4"/>
         <Tooltip/>
         <Legend />
-        <Line dataKey='price'  fill= '#000000'  >
+        <Line dataKey='price'  fill= '#ffffff'  >
 
         </Line>
       </LineChart>    

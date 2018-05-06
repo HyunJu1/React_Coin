@@ -23,19 +23,22 @@ class SearchBar extends Component {
     <Link to={`/${this.state.term}`}></Link>;
     this.setState({ term: '' }); 
   }
-
+ 
   render() {
     return (
+
       <form onSubmit={this.onFormSubmit} className="input-group">
         <input 
           placeholder="Search For Coin Name"
           className="form-control"
-          value={this.state.term}
-          onChange={this.onInputChange} />
+          value={this.state.term} 
+          onChange={this.onInputChange}
+        />
         <span className="input-group-btn">
-          <Link to={`/${this.state.term.toLowerCase()}`}><button type="submit" className="btn btn-primary">Submit</button></Link>
+          <Link to={`/${this.state.term.toLowerCase()}`}><button type="submit" className="btn btn-dark">Search</button></Link>
         </span>
       </form>
+
     );
   }
 }

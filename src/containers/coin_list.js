@@ -5,9 +5,7 @@ import SearchBar from './searchBar';
 import {fetchCoins} from '../actions';
 import { BootstrapTable, TableRow,TableHeader, TableBody, TableRowColumn, TableHeaderColumn } from 'react-bootstrap-table';
 import _ from 'lodash';
-import io from 'socket.io-client';
 import CoinChart from './barChart';
-import Timestamp from 'react-timestamp';
 import CoinListHeader from '../components/CoinListHeader';
 import CoinListItem from '../components/CoinListItem';
 
@@ -22,19 +20,11 @@ class CoinList extends Component {
       this.props.fetchCoins();
       console.log("data Update");
       
-    }, 200000);
+    }, 40000);
  
-    setInterval(function() {
-      this.setState({now: Date.now()/1000});
-    }.bind(this), 1000);
-  }
-  constructor(props){
-    super(props);
-    this.state={
-      now:Date.now()/1000,
 
-    };
   }
+
 
 
   renderCoin(){
@@ -63,13 +53,8 @@ class CoinList extends Component {
 
     return (
       <div>        
-        <div className="info-tab">
-          <p>  
-            <br/>
-              (Last Updated : <Timestamp time={this.state.now}  format="full"  /> 
-          </p>
-          
-        </div>
+        <br/>
+        <br/><br/>
         <table className="table table-hover">
           <CoinListHeader/>
           <tbody>
@@ -78,7 +63,7 @@ class CoinList extends Component {
 
           </tbody>
         </table>
-        <SearchBar/>
+      
         <CoinChart data={this.props.coin}/>
 
 
