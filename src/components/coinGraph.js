@@ -30,6 +30,7 @@ class CoinGraph extends Component{
   render(){
     let now = Date.now();
     var then;
+
     if(this.state.interval === '7d'){
       then = now - 24 * 60 * 60 * 1000 * 7; //7DAY
     }else if(this.state.interval === '1d'){
@@ -52,7 +53,9 @@ class CoinGraph extends Component{
       this.setState({
         coinList : response.data
       });
+
     });
+
     if(this.state.quote==='price'){
       this.coinList1=this.state.coinList.price_usd;
     }
@@ -77,10 +80,12 @@ class CoinGraph extends Component{
       
     return(
       <div className="chart">
-        <p>Selected about: {this.state.quote} </p>
-        <p>Selected interval: {this.state.interval} </p>
+        <p calssName ="chart_p"> Selected about: {this.state.quote} </p>
+        <p calssName ="chart_p">Selected interval: {this.state.interval} </p>
         <label>
-          Select [Price / Market Cap By Available Supply / Volume ] : 
+          <p calssName ="chart_p">
+            Select [ Price / Market Cap By Available Supply / Volume ] : 
+          </p>
           <button className="btn btn-outline-warning"onClick={() => this.handleClick1('price')}>PRICE </button>
           <button className="btn btn-outline-warning"onClick={() => this.handleClick1('market_cap')}>MARKET_CAP </button>
           <button className="btn btn-outline-warning"onClick={() => this.handleClick1('volume')}>VOLUME </button>

@@ -11,5 +11,6 @@
       - Price Chage Graph 
       - Searching
       - Using Redux
+      - Get Coin Image 
 
     

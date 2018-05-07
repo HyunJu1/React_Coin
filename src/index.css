@@ -78,3 +78,7 @@ input:focus {
 .chart button{
   margin: 0.8em;
 }
+
+.chart_p{
+  font-weight:200;
+}

@@ -10,4 +10,4 @@ const CoinIcon = props => {
   );
 };
 
-export default CoinIcon; 
+export default CoinIcon;  
