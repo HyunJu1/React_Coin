@@ -17,7 +17,7 @@ class CoinList extends Component {
       this.props.fetchCoins();
       console.log("data Update");
       
-    }, 10000);
+    }, 15000);
   }
   renderCoin(){
  

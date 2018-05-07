@@ -80,8 +80,8 @@ class CoinGraph extends Component{
       
     return(
       <div className="chart">
-        <p calssName ="chart_p"> Selected about: {this.state.quote} </p>
-        <p calssName ="chart_p">Selected interval: {this.state.interval} </p>
+        <p classsName ="chart_p"> Selected about: {this.state.quote} </p>
+        <p className ="chart_p">Selected interval: {this.state.interval} </p>
         <label>
           <p calssName ="chart_p">
             Select [ Price / Market Cap By Available Supply / Volume ] : 
