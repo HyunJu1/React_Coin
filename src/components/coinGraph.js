@@ -25,17 +25,17 @@ class CoinGraph extends Component{
     let now = Date.now();
     var then;
     //var then = now - 24 * 60 * 60 * 1000 * 7; //7DAY
-    if(this.state.interval=='7d'){
+    if(this.state.interval == '7d'){
       then = now - 24 * 60 * 60 * 1000 * 7; //7DAY
-    }else if(this.state.interval=='1d'){
+    }else if(this.state.interval == '1d'){
       then = now - 24 * 60 * 60 * 1000 ; //1DAY
     }
-    else if(this.state.interval=='1m'){
+    else if(this.state.interval == '1m'){
       then = now - 24 * 60 * 60 * 1000 *30; //1m
-    }else if(this.state.interval=='3m'){
+    }else if(this.state.interval == '3m'){
       then = now - 24 * 60 * 60 * 1000 *90; //3m
     }
-    else if(this.state.interval=='1y'){
+    else if(this.state.interval == '1y'){
       then = now - 24 * 60 * 60 * 1000 *365; //1y
     }
 
@@ -43,10 +43,10 @@ class CoinGraph extends Component{
     console.log(moment(then).format("YYYY/MM/DD/HH:MM"));
     let id = this.props.id;
     let url = `https://graphs2.coinmarketcap.com/currencies/${id}/${then}/${now}/`;
-    axios.get(url).then(response=>{ 
+    axios.get(url).then(response =>{ 
       console.log(response.data.price_usd[0]);
       this.setState({
-        coinList:response.data.price_usd
+        coinList : response.data.price_usd
       });
     });
     console.log(this.state.coinList);

@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom';
 import CoinListHeader from '../components/CoinListHeader';
 import CoinListItem from '../components/CoinListItem';
 
-
 class CoinList extends Component {
 
   componentDidMount(){
@@ -18,20 +17,15 @@ class CoinList extends Component {
       this.props.fetchCoins();
       console.log("data Update");
       
-    }, 40000);
- 
-
+    }, 10000);
   }
-
-
-
   renderCoin(){
  
     return _.map(this.props.coin, coinData => {
       return(
-        
+  
         <CoinListItem coin={coinData}/>
-      );   
+      );  
     });
   }
   displayPrompt(coinData) {
@@ -43,8 +37,6 @@ class CoinList extends Component {
       );
     }
   }
-
-
 
   render() {
     const dataList = (this.props.coin);
@@ -58,27 +50,19 @@ class CoinList extends Component {
         <table className="table table-hover">
           <CoinListHeader/>
           <tbody>
-
             {this.renderCoin()}   
-
           </tbody>
         </table>
       
-        {/* <CoinChart data={this.props.coin}/> */}
-
         <br/>
         <Link to={`/barchart`}><button type="submit" className="btn btn-dark">See BarChart(Change Price(%)) </button></Link>
         <br/>
         <br/>
         <br/>
-   
       </div>
-
     );
   }
 }
-
-
 function mapStateToProps(state) { 
   return {
     coin: state.coin

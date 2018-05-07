@@ -17,7 +17,7 @@ class CoinDetail extends Component{
       this.props.fetchCoin(id);
       console.log("data Update");
       
-    }, 50000);
+    }, 20000);
  
   }
 

@@ -1,6 +1,7 @@
 import React,{Component}  from 'react';
 import Timestamp from 'react-timestamp';
 import SearchBar from '../components/searchBar';
+import { Link } from 'react-router-dom';
 import '../index.css';
 class Header extends Component {
   componentDidMount(){
@@ -27,14 +28,13 @@ class Header extends Component {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
               <li className="nav-item">
-                <a className="nav-link" href="/">Coin Table</a>
+                <Link to={`/`}><a className="nav-link">Coin Table</a></Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="/barchart">Change Compare Graph</a>
+                <Link to={`/barchart`}><a className="nav-link" >Change Compare Graph</a></Link>
               </li>
 
             </ul>
-            {/* <form className="form-inline my-2 my-lg-0"> */}
             <SearchBar/>
           </div>
         </nav>

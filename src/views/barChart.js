@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import {BarChart, Bar, XAxis, Cell, YAxis, CartesianGrid, Tooltip, Legend} from 'recharts';
 import {fetchCoins} from '../actions';
 import { connect } from 'react-redux';
-import Timestamp from 'react-timestamp';
+
 import '../index.css';
 class BarCharts extends Component {
   componentDidMount(){
@@ -19,10 +19,12 @@ class BarCharts extends Component {
  
 
   }
+
   render() {
     
     
     const  data  = this.props.coin;
+
     const chartData = _.map(data, coinData => {
       return {
         
@@ -37,18 +39,19 @@ class BarCharts extends Component {
     return (
       <div>
         <br/>
-        <h5> Comparing Change of Price (%)</h5>    
-        <p>Last Updated: <Timestamp time={this.props.coin.last_updated}/> </p>
+        <h5> Comparing Change of Price (%)</h5>  
+          
+        <br/>
         <BarChart width={1000} height={350} data={chartData}>
           <XAxis dataKey='name'/>
-          <YAxis dataKey='Price_Change_1HOUR' fill='#000000'/>
+          <YAxis dataKey='Price_Change_1HOUR' fill='#000000' />
           <CartesianGrid strokeDasharray="4 4"/>
           <Tooltip/>
           <Legend />
-          <Bar dataKey='Price_Change_1HOUR'  fill= '#000000'onclick={<Link to={`/id`}></Link>} >
+          <Bar dataKey='Price_Change_1HOUR'  fill= '#000000' >
             {chartData.map((entry)=>{
               const colors = entry.Price_Change_1HOUR>0?'#009900':'#ff0000';
-              return <Cell fill={colors} key='name'  />;
+              return <Cell fill={colors} key='name'   />;
             })
             }
           </Bar>
