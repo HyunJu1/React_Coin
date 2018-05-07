@@ -7,8 +7,6 @@ export const FETCH_COINS = 'FETCH_COINS';
 export const FETCH_COIN = 'FETCH_COIN';
 
 
-
-
 export function fetchCoins() {
   const url = `${ROOT_URL}`;
   const request = axios.get(url); 

@@ -52,8 +52,7 @@ class CoinList extends Component {
           <tbody>
             {this.renderCoin()}   
           </tbody>
-        </table>
-      
+        </table>      
         <br/>
         <Link to={`/barchart`}><button type="submit" className="btn btn-dark">See BarChart(Change Price(%)) </button></Link>
         <br/>
