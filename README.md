@@ -15,8 +15,8 @@
 ## Capture Images : 
 
     
-- [API](https://user-images.githubusercontent.com/17667687/52952894-56d8c280-33c9-11e9-9f42-020cafe17e42.png)
-- [API](https://user-images.githubusercontent.com/17667687/52952893-56402c00-33c9-11e9-9f1e-cba0cfed67c5.png)
-- [API](https://user-images.githubusercontent.com/17667687/52952894-56d8c280-33c9-11e9-9f42-020cafe17e42.png)
-- [API](https://user-images.githubusercontent.com/17667687/52952896-56d8c280-33c9-11e9-9b82-24cb49706fd1.png)
-- [API](https://user-images.githubusercontent.com/17667687/52952897-56d8c280-33c9-11e9-9d1e-c16c702461ef.png)
+![API](https://user-images.githubusercontent.com/17667687/52952894-56d8c280-33c9-11e9-9f42-020cafe17e42.png)
+![API](https://user-images.githubusercontent.com/17667687/52952893-56402c00-33c9-11e9-9f1e-cba0cfed67c5.png)
+![API](https://user-images.githubusercontent.com/17667687/52952894-56d8c280-33c9-11e9-9f42-020cafe17e42.png)
+![API](https://user-images.githubusercontent.com/17667687/52952896-56d8c280-33c9-11e9-9b82-24cb49706fd1.png)
+![API](https://user-images.githubusercontent.com/17667687/52952897-56d8c280-33c9-11e9-9d1e-c16c702461ef.png)
